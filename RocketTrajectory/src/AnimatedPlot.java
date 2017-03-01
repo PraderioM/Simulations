@@ -16,12 +16,9 @@ public class AnimatedPlot extends JPanel {
     private int earthRadius = 12;
     private int marsRadius = 9;
     private int jupiterRadius = 17;
-<<<<<<< HEAD
     private int sunRadius = 20;
 
     private Color BROWN = new Color(156, 93, 82);
-=======
->>>>>>> 692a64d117bf72478f621faeaa08c72efbf2b9b1
 
 
     private double dt; //time between consecutive frames.
@@ -45,10 +42,6 @@ public class AnimatedPlot extends JPanel {
         T0 = Tif[0];
 
         //we define a dimensional parameter.
-<<<<<<< HEAD
-=======
-        m=778.6;//todo remove
->>>>>>> 692a64d117bf72478f621faeaa08c72efbf2b9b1
         max = m;
 
         //get the adequate elements in order for the program to plot the simulation at a given speed.
@@ -94,7 +87,6 @@ public class AnimatedPlot extends JPanel {
             g.setColor(Color.WHITE);
             g.fillOval(pos[2*T], pos[2*T+1], rocketRadius, rocketRadius);
 
-<<<<<<< HEAD
             //draw the planets and Sun.
             g.setColor(Color.YELLOW); //Sun
             g.fillOval(BOX_WIDTH, BOX_HEIGHT, sunRadius, sunRadius);
@@ -113,23 +105,6 @@ public class AnimatedPlot extends JPanel {
 
             g.setColor(BROWN); //Jupiter
             g.fillOval((int) (BOX_WIDTH*(1+778.6*Math.cos(T0*2*Math.PI/4331)/max)), (int) (BOX_HEIGHT*(1-778.6*Math.sin(T0*2*Math.PI/4331)/max)), jupiterRadius, jupiterRadius);
-=======
-            //draw the planets.
-            g.setColor(Color.GRAY); //Mercury
-            g.fillOval((int) (BOX_WIDTH*(1+57.9*Math.cos(T0*2*Math.PI/88)/max)), (int) (BOX_WIDTH*(1-57.9*Math.sin(T0*2*Math.PI/88)/max)), mercuryRadius, mercuryRadius);
-
-            g.setColor(Color.GREEN); //Venus
-            g.fillOval((int) (BOX_WIDTH*(1+108.2*Math.cos(T0*2*Math.PI/224.7)/max)), (int) (BOX_WIDTH*(1-108.2*Math.sin(T0*2*Math.PI/224.7)/max)), venusRadius, venusRadius);
-
-            g.setColor(Color.BLUE); //Earth
-            g.fillOval((int) (BOX_WIDTH*(1+149.6*Math.cos(T0*2*Math.PI/365.2)/max)), (int) (BOX_WIDTH*(1-149.6*Math.sin(T0*2*Math.PI/365.2)/max)), earthRadius, earthRadius);
-
-            g.setColor(Color.RED); //Mars
-            g.fillOval((int) (BOX_WIDTH*(1+227.9*Math.cos(T0*2*Math.PI/687)/max)), (int) (BOX_WIDTH*(1-227.9*Math.sin(T0*2*Math.PI/687)/max)), marsRadius, marsRadius);
-
-            g.setColor(Color.YELLOW); //Jupiter
-            g.fillOval((int) (BOX_WIDTH*(1+778.6*Math.cos(T0*2*Math.PI/4331)/max)), (int) (BOX_WIDTH*(1-778.6*Math.sin(T0*2*Math.PI/4331)/max)), jupiterRadius, jupiterRadius);
->>>>>>> 692a64d117bf72478f621faeaa08c72efbf2b9b1
 
 
             //draw the time passed
