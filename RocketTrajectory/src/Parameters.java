@@ -22,7 +22,7 @@ import java.util.ArrayList;
   **/
 
 /**
- * Created by marco on 27/02/17.
+ * Created by marco on 01/04/17.
  */
 public class Parameters extends JFrame{
     //define a set of constants used to define the dimension of the panels
@@ -42,7 +42,7 @@ public class Parameters extends JFrame{
     private NumberFormat T0Format;
     private JFormattedTextField T0Field = new JFormattedTextField(T0Format);
 
-    private JLabel T1Label = new JLabel("second burn time (days)=");
+    private JLabel T1Label = new JLabel("second burst time (days)=");
     private NumberFormat T1Format;
     private JFormattedTextField T1Field = new JFormattedTextField(T0Format);
 
@@ -50,8 +50,8 @@ public class Parameters extends JFrame{
     private NumberFormat T2Format;
     private JFormattedTextField T2Field = new JFormattedTextField(T0Format);
 
-    //first burn info
-    private JLabel V0Label = new JLabel("First burn data");
+    //first burst info
+    private JLabel V0Label = new JLabel("First burst data");
 
     private JLabel V0mLabel = new JLabel("Intensity of velocity change (km/s)=");//intensity
     private NumberFormat V0mFormat;
@@ -61,8 +61,8 @@ public class Parameters extends JFrame{
     private NumberFormat V0dFormat;
     private JFormattedTextField V0dField = new JFormattedTextField(V0dFormat);
 
-    //second burn settings
-    private JLabel V1Label = new JLabel("First burn data");
+    //second burst settings
+    private JLabel V1Label = new JLabel("First burst data");
 
     private JLabel V1mLabel = new JLabel("Intensity of velocity change (km/s)=");//intensity
     private NumberFormat V1mFormat;
@@ -128,7 +128,7 @@ public class Parameters extends JFrame{
                 V1[1] = Math.toRadians(Double.parseDouble(V1dField.getText()));
 
                 //Solve the differential equation.
-                ArrayList vect = new ArrayList<Double>();
+                ArrayList<Double> vect = new ArrayList<Double>();
                 SolveOds(T, V0, V1, vect);
 
                 //declare the maximum in the obtained solution
@@ -139,19 +139,19 @@ public class Parameters extends JFrame{
                 int i;
                 XYSeries X = new XYSeries("", false);
                 for (i=0; i<vect.size()/2; i++){
-                    X.add((double) vect.get(2*i), (double) vect.get(2*i+1));
+                    X.add(vect.get(2*i), vect.get(2*i+1));
                 }
 
                 new StaticPlot(X); //plot the rocket trajectory.
 
-                ArrayList v = new ArrayList<Double>();
+                ArrayList<Double> v = new ArrayList<Double>();
                 int n = (int) (Double.parseDouble(SField.getText()));
                 for (i=0; 2*n*i+1<vect.size(); i++){
                     v.add(vect.get(2*n*i));
                     v.add(vect.get(2*n*i+1));
                     //actualize the maximum.
-                    if (m< Math.abs((double)vect.get(2*n*i))){ m = Math.abs((double) vect.get(2*n*i)); }
-                    if (m< Math.abs((double)vect.get(2*n*i+1))){ m = Math.abs((double) vect.get(2*n*i+1)); }
+                    if (m< Math.abs(vect.get(2*n*i))){ m = Math.abs(vect.get(2*n*i)); }
+                    if (m< Math.abs(vect.get(2*n*i+1))){ m = Math.abs(vect.get(2*n*i+1)); }
                 }
 
                 //draw an animation representing the rocket trajectory.
@@ -164,7 +164,7 @@ public class Parameters extends JFrame{
     }
 
     //this method solves numerically the necessary differential equation
-    private void SolveOds(double[] T, double[] V0, double[] V1, ArrayList vect){
+    private void SolveOds(double[] T, double[] V0, double[] V1, ArrayList<Double> vect){
         int i;
         double t = T[0];
 
@@ -174,8 +174,8 @@ public class Parameters extends JFrame{
         //set the initial conditions of position and velocity.
         double[] V = new double[4];
         //length measured in Km*10⁶ speed in Km*10⁶/day.
-        V[0] = Planets[2].xpos;
-        V[1] = Planets[2].ypos+0.006052; //it is important to separate the rocket from the planets core and place it on ots surface.
+        V[0] = Planets[2].xpos+0.006052; //it is important to separate the rocket from the planets core and place it on ots surface.
+        V[1] = Planets[2].ypos;
         V[2] = -Planets[2].revolutionVelocity*Planets[2].sunDistance*Math.sin(Planets[2].degree)+V0[0]*Math.cos(V0[1]+Planets[2].degree+Math.PI/2);
         V[3] = Planets[2].revolutionVelocity*Planets[2].sunDistance*Math.cos(Planets[2].degree)+V0[0]*Math.sin(V0[1]+Planets[2].degree+Math.PI/2);
         /*V[0] = 149.6;
@@ -183,7 +183,7 @@ public class Parameters extends JFrame{
         V[2] = 24*36*4./1000;
         V[3] = 24*36*(29.8+4)/10000;*/
 
-        //we solve numerically the differential equation until the second burn.
+        //we solve numerically the differential equation until the second burst.
         while (t<T[1]){
             vect.add(V[0]); vect.add(V[1]); //add measured parameters to array
 
@@ -192,7 +192,7 @@ public class Parameters extends JFrame{
             t += dt; //make a slight increase in time.
         }
 
-        //we activate the second burn.
+        //we activate the second burst.
         V[2] += V1[0]*Math.cos(V1[1]+Math.atan2(V[3], V[2]));
         V[3] += V1[0]*Math.sin(V1[1]+Math.atan2(V[3], V[2]));
 
@@ -258,6 +258,7 @@ public class Parameters extends JFrame{
         //we measure the distance moduli to the third potency.
         aux[0] = Math.pow(V[0]*V[0]+V[1]*V[1], 3./2);
 
+        //we compute the sun's gravity pull.
         sol[2] -= SunMass*V[0]/aux[0];
         sol[3] -= SunMass*V[1]/aux[0];
 
@@ -271,11 +272,11 @@ public class Parameters extends JFrame{
         PlaceLabelTextInPosition(T1Label, T1Field, 1, 1, 2, 11, 312);
         PlaceLabelTextInPosition(T2Label, T2Field, 1, 1, 3, 11, 514);
 
-        PlaceLabelInPosition(V0Label, 11, 4);//first burn parameters
+        PlaceLabelInPosition(V0Label, 11, 4);//first burst parameters
         PlaceLabelTextInPosition(V0mLabel, V0mField, 1, 1, 5, 11, 4);
         PlaceLabelTextInPosition(V0dLabel, V0dField, 1, 1, 6, 11, 0);
 
-        PlaceLabelInPosition(V1Label, 11, 7);//second burn parameters
+        PlaceLabelInPosition(V1Label, 11, 7);//second burst parameters
         PlaceLabelTextInPosition(V1mLabel, V1mField, 1, 1, 8, 11, 3);
         PlaceLabelTextInPosition(V1dLabel, V1dField, 1, 1, 9, 11, 0);
 

@@ -9,11 +9,11 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by marco on 27/02/17.
+ * Created by marco on 01/04/17.
  */
 public class StaticPlot {
     private static XYSeriesCollection dataset = new XYSeriesCollection();
-    private static JFrame frame = new JFrame();
+    private static JFrame frame = new JFrame("Rocket trajectory");
     private static JPanel jPanel1 = new JPanel();
 
     //define the array that is actually going to simulate the heating barr.
