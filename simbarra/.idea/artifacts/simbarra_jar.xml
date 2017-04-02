@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="simbarra:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/simbarra_jar</output-path>
+    <root id="archive" name="simbarra.jar">
+      <element id="module-output" name="simbarra" />
+      <element id="extracted-dir" path="/usr/share/java/jcommon.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/usr/share/java/jfreechart.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

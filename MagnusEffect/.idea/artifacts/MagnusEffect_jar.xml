@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MagnusEffect:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MagnusEffect_jar</output-path>
+    <root id="archive" name="MagnusEffect.jar">
+      <element id="module-output" name="MagnusEffect" />
+      <element id="extracted-dir" path="/usr/share/java/jcommon.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/usr/share/java/jfreechart.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

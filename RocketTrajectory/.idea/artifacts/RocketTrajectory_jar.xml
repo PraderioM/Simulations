@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RocketTrajectory:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RocketTrajectory_jar</output-path>
+    <root id="archive" name="RocketTrajectory.jar">
+      <element id="module-output" name="RocketTrajectory" />
+      <element id="extracted-dir" path="/usr/share/java/jfreechart.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="/usr/share/java/jcommon.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
