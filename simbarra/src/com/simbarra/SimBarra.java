@@ -113,7 +113,7 @@ public class SimBarra extends JFrame{
     }
 
     //elements that are going to be shown in the materials panel
-    private String[] string = {"Llautó", "Al·lumini", "Ferro", "Plom", "Estany", "Plata", "Or"};
+    private String[] string = {"Llautó", "Alumini", "Ferro", "Plom", "Estany", "Plata", "Or"};
     private JComboBox MaterialName = new JComboBox(string);
     private JLabel Emissivity = new JLabel();
     private JLabel EmissivityValue = new JLabel();
