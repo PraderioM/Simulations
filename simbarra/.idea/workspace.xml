@@ -32,8 +32,8 @@
       <file leaf-file-name="SimBarra.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/simbarra/SimBarra.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="110" column="32" lean-forward="true" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
+            <state relative-caret-position="397">
+              <caret line="134" column="10" lean-forward="true" selection-start-line="134" selection-start-column="10" selection-end-line="134" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -114,7 +114,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lineChart</find>
       <find>Element</find>
       <find>Element.I</find>
       <find>dataset</find>
@@ -144,6 +143,7 @@
       <find>plot.st</find>
       <find>Simul(</find>
       <find>al·</find>
+      <find>al</find>
     </findStrings>
     <replaceStrings>
       <replace>public</replace>
@@ -880,8 +880,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/simbarra/SimBarra.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="110" column="32" lean-forward="true" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="32" />
+        <state relative-caret-position="397">
+          <caret line="134" column="10" lean-forward="true" selection-start-line="134" selection-start-column="10" selection-end-line="134" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
